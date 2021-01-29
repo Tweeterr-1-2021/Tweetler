@@ -20,6 +20,10 @@
   margin: 0;
 }
 
+.show-more a {
+  color: #1da1f2;
+}
+
 .follow-info {
   margin: 10px 0;
 }

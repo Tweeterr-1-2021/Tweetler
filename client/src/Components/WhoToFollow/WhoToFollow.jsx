@@ -26,6 +26,12 @@ const WhoToFollow = () => {
                     </div>
                 </div>
 
+                <div className="follow-data show-more">
+                    <a>
+                        <div>Show more</div>
+                    </a>
+                </div>
+
             </div>
         </div>
     );

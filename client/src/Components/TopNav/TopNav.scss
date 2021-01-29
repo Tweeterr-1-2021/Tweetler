@@ -1,0 +1,35 @@
+.topNav {
+  position: relative;
+  display: flex;
+  width: 598px;
+  height: 53px;
+  border: 1px solid #ebeef0;
+//   border: 1px solid #000;
+}
+
+.tweeter-pagename {
+  align-self: flex-end;
+  width: 518px;
+  height: 53px;
+  .tweeter-pagename-container {
+    padding: 14px;
+  }
+  h2 {
+    font-weight: 800;
+    font-size: 19px;
+    margin: 0;
+  }
+}
+
+.top-tweets {
+    position: absolute;
+    right: 0;
+  .top-tweets-container {
+    padding: 14px;
+  }
+  .top-tweets-icon {
+    width: 1.5em;
+    height: 1.5em;
+    fill: rgba(29, 161, 242, 1);
+  }
+}

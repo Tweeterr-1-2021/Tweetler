@@ -1,0 +1,104 @@
+.tweet-box {
+  display: flex;
+  width: 598px;
+  height: auto;
+  border: 1px solid #ebeef0;
+}
+
+.tweet-box-image {
+  margin: 10px;
+}
+.tweet-box-image .tweet-box-image-container img {
+  width: 49px;
+  height: 49px;
+  border-radius: 50%;
+}
+
+.tweet-box-input {
+  padding-top: 25px;
+}
+.tweet-box-input .separate-line {
+  width: 100%;
+  height: 1px;
+  border-top: 1px solid #ebeef0;
+}
+
+.tweet-box-input-container {
+  width: 509px;
+  height: auto;
+}
+.tweet-box-input-container #tweet {
+  overflow: visible;
+  resize: vertical;
+  border: none;
+  border-color: transparent;
+  width: 505px;
+  height: auto;
+  font-size: 1.5em;
+}
+.tweet-box-input-container #tweet::placeholder {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-size: 18px;
+}
+.tweet-box-input-container #tweet:focus {
+  outline: none;
+}
+
+.reply-options {
+  padding-bottom: 10px;
+}
+.reply-options .reply-options-container svg {
+  width: 19.5px;
+  height: 19.5px;
+  fill: #1da1f2;
+  margin-right: 6.5px;
+}
+.reply-options .reply-options-container span {
+  font-weight: 700;
+  font-size: 13px;
+  color: #1da1f2;
+  vertical-align: super;
+}
+
+.tweet-options div:first-child {
+  display: flex;
+  position: relative;
+}
+.tweet-options .tweet-options-container {
+  display: flex;
+  align-items: center;
+  margin: 10px 0;
+}
+.tweet-options .tweet-options-container .tweet-options-icons {
+  width: 37px;
+  height: 37px;
+}
+.tweet-options .tweet-options-container .tweet-options-icons svg {
+  width: 22.5px;
+  height: 22.5px;
+  fill: #1da1f2;
+  padding: 7.5px 0;
+}
+
+.tweet-options-btn {
+  position: absolute;
+  right: 10px;
+  box-sizing: border-box;
+  margin: 10px 0;
+  width: 82px;
+  height: 37px;
+  text-align: center;
+  border-radius: 20px;
+  border: 1px solid #1da1f2;
+  background-color: #1da1f2;
+  padding: 3px 15px;
+}
+.tweet-options-btn:hover {
+  cursor: pointer;
+}
+.tweet-options-btn a {
+  text-decoration: none;
+  color: #fff;
+  font-weight: 700;
+  font-size: 15px;
+}

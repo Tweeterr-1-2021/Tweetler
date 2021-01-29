@@ -33,6 +33,7 @@
         border-radius: 20px;
         border: 1px hidden #fff;
         background-color: rgb(231, 244, 255);
+        cursor: pointer;
       }
     }
     .sidenav-item {
@@ -74,6 +75,7 @@
 .username-data {
   //   align-self: flex-end;
   position: absolute;
+  // bottom: 0;
   margin: 10px 0;
 
   .username-data-container {

@@ -1,0 +1,6 @@
+.main-comp {
+  display: flex;
+}
+.main-comp .main-trends-comp {
+  margin-left: 20px;
+}

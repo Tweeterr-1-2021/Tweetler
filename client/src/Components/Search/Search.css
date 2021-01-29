@@ -1,0 +1,27 @@
+.search-comp {
+  display: flex;
+  width: 350px;
+  height: 42px;
+  background-color: #ebeef0;
+  margin-bottom: 10px;
+  margin-top: 5px;
+  border-radius: 20px;
+  border: 1px solid #ebeef0;
+}
+
+.search-comp-icon svg {
+  padding: 13px 5px;
+  width: 30px;
+  height: 19px;
+}
+
+.search-comp-input input {
+  padding-left: 10px;
+  width: 280px;
+  height: 40px;
+  border: none;
+  background-color: #ebeef0;
+}
+.search-comp-input input:focus {
+  outline: none;
+}

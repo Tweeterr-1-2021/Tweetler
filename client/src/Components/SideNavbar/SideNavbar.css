@@ -28,6 +28,7 @@
   border-radius: 20px;
   border: 1px hidden #fff;
   background-color: #e7f4ff;
+  cursor: pointer;
 }
 .tweeter-sidenavbar-container .sidenav-container nav .sidenav-item {
   padding: 5px;
