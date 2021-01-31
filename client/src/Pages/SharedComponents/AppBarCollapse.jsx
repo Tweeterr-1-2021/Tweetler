@@ -45,19 +45,43 @@ const AppBarCollapse = (props) => (
           <AccountCircle /> Profile
         </Button>
       </MenuItem>
+      <MenuItem>
+        <Button href="/" color="inherit">
+          LogOut
+        </Button>
+      </MenuItem>
     </ButtonAppBarCollapse>
     <div className={props.classes.buttonBar} id="appbar-collapse">
-      <Button href="/home" style={{ fontSize: "20px" }} color="inherit">
+      {/* <Button
+        href="/home"
+        style={{ fontSize: "15px", fontWeight: "600" }}
+        color="inherit"
+      >
         Home
-      </Button>
-      <Button href="/explore" style={{ fontSize: "20px" }} color="inherit">
+      </Button> */}
+      {/* <Button
+        href="/explore"
+        style={{ fontSize: "15px", fontWeight: "600" }}
+        color="inherit"
+      >
         Explore
       </Button>
-      <Button href="/bookmarks" style={{ fontSize: "20px" }} color="inherit">
+      <Button
+        href="/bookmarks"
+        style={{ fontSize: "15px", fontWeight: "600" }}
+        color="inherit"
+      >
         BookMarks
-      </Button>
-      <Button href="/profile" color="inherit">
+      </Button> */}
+      {/* <Button href="/profile" color="inherit">
         <AccountCircle style={{ fontSize: "50px" }} />
+      </Button> */}
+      <Button
+        href="/"
+        style={{ fontSize: "15px", fontWeight: "600" }}
+        color="inherit"
+      >
+        LogOut
       </Button>
     </div>
   </div>

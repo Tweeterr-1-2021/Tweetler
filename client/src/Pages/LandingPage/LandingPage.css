@@ -11,28 +11,33 @@
   align-items: center;
   width: 50%;
 }
+
 #tweeter-container .tweeter-logo {
   fill: #1da1f2;
-  width: 47px;
-  height: 47px;
+  width: 80px;
+  height: 80px;
 }
+
 #tweeter-container .tweeter-slogan {
   font-size: 30px;
   font-weight: 700;
   margin-top: 20px;
 }
-#tweeter-container .tweeter-slogan + div {
+
+#tweeter-container .tweeter-slogan+div {
   font-size: 15px;
   font-weight: 700;
   margin-top: 60px;
   margin-bottom: 15px;
+  margin-left: 15px;
 }
+
 #tweeter-container #tweeter-landing {
   width: 50%;
   margin: 0 auto;
 }
-#tweeter-container .tweeter-accounts .tweeter-signup,
-#tweeter-container .tweeter-accounts .tweeter-login {
+
+#tweeter-container .tweeter-accounts .tweeter-signup, #tweeter-container .tweeter-accounts .tweeter-login {
   border-radius: 20px;
   border: 1px solid #1da1f2;
   text-align: center;
@@ -40,17 +45,19 @@
   padding: 10px;
   font-weight: 600;
 }
-#tweeter-container .tweeter-accounts .tweeter-signup:hover,
-#tweeter-container .tweeter-accounts .tweeter-login:hover {
+
+#tweeter-container .tweeter-accounts .tweeter-signup:hover, #tweeter-container .tweeter-accounts .tweeter-login:hover {
   cursor: pointer;
 }
+
 #tweeter-container .tweeter-accounts .tweeter-signup {
   background-color: #1da1f2;
   color: #fff;
 }
+
 #tweeter-container .tweeter-accounts .tweeter-login a {
   text-decoration: none;
-  color: #1DA1F2;
+  color: #1da1f2;
 }
 
 .landing-background-container {
@@ -58,27 +65,33 @@
   align-items: center;
   justify-content: center;
   position: relative;
-  background-color: #74cafe;
+  background-color: #1da1f2;
   overflow: hidden;
   width: 50%;
   height: 100%;
 }
+
 .landing-background-container .tweeter-background-img {
   position: absolute;
-  fill: #1da1f2;
-  height: 1207px;
-  width: 1207px;
-  top: -30vh;
-  right: -50vh;
+  fill: #74cafe;
+  height: 682px;
+  width: 1000px;
+  top: -2vh;
+  right: -20vh;
 }
+
 .landing-background-container .landing-background-feat {
   width: auto;
   box-sizing: border-box;
-  color: #f1ffff;
+  color: #74cafe;
   font-size: 20px;
-  font-weight: 700;
+  font-weight: 800;
   z-index: 1000;
+  position: absolute;
+  top: 450px;
+  left: 311px;
 }
+
 .landing-background-container .landing-background-feat div {
   margin-bottom: 40px;
 }

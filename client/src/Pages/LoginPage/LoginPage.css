@@ -40,3 +40,22 @@
 #login-form .forgot-password span {
   text-align: center;
 }
+
+.MuiTypography-colorPrimary {
+  color: #2196f3 !important;
+  font-size: medium !important;
+  font-weight: 700 !important;
+  margin-bottom: 40px;
+}
+
+.MuiGrid-justify-xs-flex-end {
+  justify-content: center !important;
+  margin-bottom: 30px !important;
+}
+
+.MuiOutlinedInput-notchedOutline {
+  border-color: #2196f3 !important;
+}
+.MuiFormLabel-root.Mui-focused {
+  color: #2196f3 !important;
+}

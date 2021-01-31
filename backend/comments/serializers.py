@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from favourites.models import Favourite
+from comments.models import Comment
 
 
 class CommentSerializer(serializers.ModelSerializer):
@@ -7,6 +7,6 @@ class CommentSerializer(serializers.ModelSerializer):
     tweet = serializers.CharField(source='tweet_Id.tweet', read_only=True)
 
     class Meta:
-        model = Favourite
+        model = Comment
         fields = ('id', 'user', 'tweet', 'user_Id',
                   "tweet_Id", 'comment', 'img', 'time')

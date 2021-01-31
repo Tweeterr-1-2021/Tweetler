@@ -7,13 +7,14 @@ import "./HomePage.css";
 
 const HomePage = () => {
   return (
-    <div className="homepage">
+    <div>
       <NavBar />
-      <SideNavbar />
-      <NewTweet />
-      <PeopleTweet />
-      <Main />
+      <div className="homepage" style={{ marginTop: "65px" }}>
+        <SideNavbar />
+        <Main />
+      </div>
     </div>
+    
   );
 };
 

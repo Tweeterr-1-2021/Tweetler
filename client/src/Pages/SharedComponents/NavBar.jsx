@@ -31,7 +31,7 @@ const styles = {
 function NavBar(props) {
   const { classes } = props;
   return (
-    <AppBar position="fixed" className={classes.navigation}>
+    <AppBar position="fixed" className={classes.navigation} >
       <Toolbar>
         <IconButton href="/home" color="inherit">
           <GiHummingbird className="Header" style={{ fontSize: "50px" }} />

@@ -22,6 +22,7 @@ urlpatterns = [
     path('auth/', include('djoser.urls')),
     path('auth/', include('djoser.urls.jwt')),
     path('tweet/', include('tweets.urls')),
+    path('comment/', include('comments.urls')),
     path('follow/', include('followers.urls')),
     path('favourite/', include('favourites.urls')),
     path('like/', include('likes.urls')),

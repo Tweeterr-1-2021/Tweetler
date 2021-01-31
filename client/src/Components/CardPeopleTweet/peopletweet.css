@@ -1,7 +1,8 @@
 .box-peopletweet {
   position: absolute;
-  width: 595px;
-  height: -webkit-fill-available;
+  width: 520px;
+  height: 620px;
+  margin-left: 4.6rem;
   left: 340px;
   top: 332.9px;
   background: #ffffff;
@@ -55,6 +56,7 @@
   letter-spacing: -0.035em;
   color: #9e9d9d;
 }
+
 #tweet-content {
   position: absolute;
   width: 544.15px;
@@ -72,12 +74,13 @@
 
 .pictweet-People {
   position: absolute;
-  width: 550px;
+  width: 500px;
   height: 290px;
   left: 20px;
   top: 150px;
   border-radius: 8px;
 }
+
 .div-comment {
   position: absolute;
   width: 102.26px;
@@ -85,6 +88,7 @@
   left: 20px;
   top: 230px;
 }
+
 .div-commentt {
   position: absolute;
   width: 20px;
@@ -92,6 +96,7 @@
   left: 20px;
   top: 230px;
 }
+
 #comt {
   position: absolute;
   font-size: x-large !important;
@@ -119,8 +124,7 @@
   cursor: pointer;
 }
 
-#commn,
-comt:hover {
+#commn, comt:hover {
   color: #313030 !important;
 }
 
@@ -140,6 +144,7 @@ comt:hover {
   letter-spacing: -0.035em !important;
   text-transform: inherit;
 }
+
 #retwt {
   position: absolute;
   width: 59px;
@@ -148,6 +153,7 @@ comt:hover {
   top: -2px;
   color: #4f4f4f;
 }
+
 #pic-retwt {
   position: absolute;
   width: 20px;
@@ -164,6 +170,7 @@ comt:hover {
   left: 300px;
   top: 230px;
 }
+
 .div-likke {
   position: absolute;
   width: 20px;
@@ -171,6 +178,7 @@ comt:hover {
   left: 20px;
   top: 230px;
 }
+
 #lik {
   position: absolute;
   font-size: x-large !important;
@@ -201,6 +209,7 @@ comt:hover {
 #lik:hover {
   color: #a00404 !important;
 }
+
 .div-book {
   position: absolute;
   width: 102.26px;
@@ -208,6 +217,7 @@ comt:hover {
   left: 440px;
   top: 230px;
 }
+
 .div-boook {
   position: absolute;
   width: 20px;
@@ -215,6 +225,7 @@ comt:hover {
   left: 20px;
   top: 230px;
 }
+
 #bok {
   position: absolute;
   font-size: x-large !important;
@@ -270,12 +281,15 @@ comt:hover {
   outline: none !important;
   border: none;
 }
+
 .MuiFilledInput-multiline {
   padding: 10px 13px 0px !important;
 }
+
 .MuiFilledInput-inputMultiline {
   height: 28px !important;
 }
+
 .addd-pic {
   position: absolute;
   width: 30px !important;

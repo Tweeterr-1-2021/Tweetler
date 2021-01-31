@@ -15,7 +15,7 @@ class TweetList(generics.ListCreateAPIView):
 
 @api_view(['POST'])
 def details(request):
-    tweeeeeets = Tweet.objects.get(user_Id=request.data['id'])
+    tweeeeeets = Tweet.objects.get(pk=request.data['pk'])
     # console.log('dssss', myaccount)
-    serializer = NewACreateSerializer(tweeeeeets, many=False)
+    serializer = TweetSerializer(tweeeeeets, many=False)
     return Response(serializer.data)

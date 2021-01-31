@@ -3,6 +3,7 @@ import "./profile.css";
 
 import NavBar from "../SharedComponents/NavBar";
 import Card from "./TwetterCard";
+import { GiCogLock, GiConsoleController } from "react-icons/gi";
 
 export default function Profile() {
   const [mydata, setMydata] = useState([]);
@@ -18,30 +19,30 @@ export default function Profile() {
       .then((data) => data.json())
       .then((data) => {
         console.log("mydataa", data);
-        setMydata([data]);
-      });
-  }, []);
+        setMydata(data)
+      })
+  }, [])
 
   // console.log('<<<<<<<<', mydata)
   // console.log("asd", id)
   return (
-    <div class="row py-5 px-4">
+    <div className="row py-5 px-4">
       <NavBar />
-      <div class="col-md-5 mx-auto">
-        <div class="bg-white shadow rounded overflow-hidden">
-          <div class="px-4 pt-0 pb-4 cover">
-            <div class="media align-items-end profile-head">
+      <div className="col-md-5 mx-auto">
+        <div className="bg-white shadow rounded overflow-hidden">
+          <div className="px-4 pt-0 pb-4 cover">
+            <div className="media align-items-end profile-head">
               <div className="profilebg">
-                <div class="profile mr-3">
+                <div className="profile mr-3">
                   <img
-                    src="https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=80"
+                    src={mydata.image}
                     alt="..."
-                    class=" forProfile"
+                    className=" forProfile"
                   />
                 </div>
                 <div className="ForName">
-                  <h4 class="mt-0 mb-0">Mark Williams</h4>
-                  <p class="small mb-4">New York</p>
+                  <h4 className="mt-0 mb-0">{mydata.name}</h4>
+                  <p className="small mb-4">palestine</p>
                 </div>
                 <button id="edit" href="#">
                   Edit profile
@@ -67,15 +68,16 @@ export default function Profile() {
               </div>
             </div>
           </div>
+          {/* <div> */}
+          {
+            mydata && mydata.tweets && mydata.tweets.map((tweet, i) => (
+              <Card mydata={mydata} tweet={tweet} key={i} />
+            ))
+          }
+          {/* </div> */}
+          {/* {console.log('sss', mydata)} */}
+          {/* <Card mydata={mydata} /> */}
 
-          <div className="Buttons">
-            <button className="b">Tweets</button>
-            <button className="b">Tweets & Reply</button>
-            <button className="b">Media</button>
-            <button className="b">Likes</button>
-          </div>
-
-          <Card mydata={mydata} />
         </div>
       </div>
     </div>
