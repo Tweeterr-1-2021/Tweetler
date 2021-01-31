@@ -64,12 +64,12 @@ function App() {
     <BrowserRouter>
       <div className="App">
         <Switch>
-          {/* <Route exact path='/' component={LandingPage}/>
+          <Route exact path='/' component={LandingPage}/>
           <Route exact path='/login' component={LoginPage} />
-          <Route exact path='/signup' component={SignUp} /> */}
-          <Route exact path='/' render={(props) => token ? <Redirect to='/home' /> : (<LandingPage />)} />
+          <Route exact path='/signup' component={SignUp} />
+          {/* <Route exact path='/' render={(props) => token ? <Redirect to='/home' /> : (<LandingPage />)} />
           <Route exact path='/login' render={(props) => token ? <Redirect to='/home' /> : (<LoginPage login={setMyToken} />)} />
-          <Route exact path='/signup' render={(props) => token ? <Redirect to='/home' /> : (<SignUp signupFun={setMyToken} />)} />
+          <Route exact path='/signup' render={(props) => token ? <Redirect to='/home' /> : (<SignUp signupFun={setMyToken} />)} /> */}
           <Route path='/home' render={(props) => !token ? <Redirect to='/home' /> : (<HomePage />)} />
           {/* <Route path="/home" exact render={() => <HomePage />} /> */}
           <Route path="/explore" exact render={() => <ExplorePage />} />

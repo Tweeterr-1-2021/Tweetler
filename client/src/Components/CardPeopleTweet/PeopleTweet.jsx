@@ -1,4 +1,5 @@
 import "./peopletweet.css";
+import React, { useEffect, useState } from 'react'
 import { GoComment } from "react-icons/go";
 import { AiOutlineRetweet } from "react-icons/ai";
 import FavoriteIcon from "@material-ui/icons/Favorite";
@@ -7,25 +8,81 @@ import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
 import { BiImage } from "react-icons/bi";
 
-const PeopleTweet = () => {
+const PeopleTweet = ({ tweet }) => {
+  // console.log(',,,', tweet)
+  const [newComment, SetNewComment] = useState('')
+  const [actuallComment, SetActuallComment] = useState('')
+  const [likes, setLikes] = useState([])
+  const [bookMark, setBookMark] = useState([])
+
+
+
+  const makeComment = (e) => {
+    e.preventDefault()
+    const requestOptions = {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ tweet_Id: tweet.id, user_Id: tweet.id, comment: tweet.comment })
+    }
+    fetch('http://127.0.0.1:8000/comment/', requestOptions)
+      .then(response => response.json())
+      .then(data => {
+        console.log(data)
+        SetNewComment('')
+        SetActuallComment([...tweet.comment, data])
+      })
+  }
+
+  const addToFavourite = (e) => {
+    e.preventDefault()
+    const requestOptions = {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ tweet_Id: tweet.id, user_Id: tweet.id, comment: tweet.comment })
+    }
+    fetch('http://127.0.0.1:8000/favourite/', requestOptions)
+      .then(response => response.json())
+      .then(data => {
+        console.log(data)
+        setBookMark([...tweet.tweet_Bookmark, data])
+      })
+  }
+
+  const makeLike = (e) => {
+    e.preventDefault()
+    const requestOptions = {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ tweet_Id: tweet.id, user_Id: tweet.id })
+    }
+    fetch('http://127.0.0.1:8000/like/', requestOptions)
+      .then(response => response.json())
+      .then(data => {
+        console.log(data)
+        setLikes(...tweet.tweet_likes, data)
+      })
+  }
+
+
+  console.log('tweet', tweet, 'comment', newComment, 'like', likes, 'bookMark', bookMark)
   return (
     <div className="box-peopletweet">
       <div>
         <img
-          src="https://www.rd.com/wp-content/uploads/2017/09/01-shutterstock_476340928-Irina-Bg.jpg"
+          src={tweet.userImage}
           alt="..."
           className="pic-People"
         />
       </div>
       <div className="div-name">
-        <p id="pname">Mays Yassin</p>
-        <p id="twdate">24 June at 2:00pm</p>
+        <p id="pname">{tweet.user}</p>
+        <p id="twdate">{tweet.time.split('T')[0] + '  ,' + tweet.time.split('T')[1].split('.')[0]}</p>
       </div>
       <p id="tweet-content">
-        Traveling – it leaves you speechless, then turns you into a storyteller.
+        {tweet.tweet}
       </p>
       <img
-        src="https://www.tibco.com/blog/wp-content/uploads/2017/12/traveling.png"
+        src={tweet.img}
         alt="..."
         className="pictweet-People"
       />
