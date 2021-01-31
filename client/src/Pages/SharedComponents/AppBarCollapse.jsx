@@ -22,44 +22,53 @@ const styles = (theme) => ({
   },
 });
 
-const AppBarCollapse = (props) => (
-  <div className={props.classes.root}>
-    <ButtonAppBarCollapse>
-      <MenuItem>
-        <Button href="/home" color="inherit">
-          Home
+const AppBarCollapse = (props) => {
+  const logout = () => {
+    localStorage.removeItem('Authorization')
+    localStorage.removeItem('id')
+    window.location.reload()
+
+  }
+  return (
+
+
+    <div className={props.classes.root} >
+      <ButtonAppBarCollapse>
+        <MenuItem>
+          <Button href="/home" color="inherit">
+            Home
         </Button>
-      </MenuItem>
-      <MenuItem>
-        <Button hre="/explore" color="inherit">
-          Explore
+        </MenuItem>
+        <MenuItem>
+          <Button hre="/explore" color="inherit">
+            Explore
         </Button>
-      </MenuItem>
-      <MenuItem>
-        <Button href="/bookmarks" color="inherit">
-          BookMarks
+        </MenuItem>
+        <MenuItem>
+          <Button href="/bookmarks" color="inherit">
+            BookMarks
         </Button>
-      </MenuItem>
-      <MenuItem>
-        <Button href="/profile" color="inherit">
-          <AccountCircle /> Profile
+        </MenuItem>
+        <MenuItem>
+          <Button href="/profile" color="inherit">
+            <AccountCircle /> Profile
         </Button>
-      </MenuItem>
-      <MenuItem>
-        <Button href="/" color="inherit">
-          LogOut
+        </MenuItem>
+        <MenuItem>
+          <Button href="/" color="inherit">
+            LogOut
         </Button>
-      </MenuItem>
-    </ButtonAppBarCollapse>
-    <div className={props.classes.buttonBar} id="appbar-collapse">
-      {/* <Button
+        </MenuItem>
+      </ButtonAppBarCollapse>
+      <div className={props.classes.buttonBar} id="appbar-collapse">
+        {/* <Button
         href="/home"
         style={{ fontSize: "15px", fontWeight: "600" }}
         color="inherit"
       >
         Home
       </Button> */}
-      {/* <Button
+        {/* <Button
         href="/explore"
         style={{ fontSize: "15px", fontWeight: "600" }}
         color="inherit"
@@ -73,18 +82,20 @@ const AppBarCollapse = (props) => (
       >
         BookMarks
       </Button> */}
-      {/* <Button href="/profile" color="inherit">
+        {/* <Button href="/profile" color="inherit">
         <AccountCircle style={{ fontSize: "50px" }} />
       </Button> */}
-      <Button
-        href="/"
-        style={{ fontSize: "15px", fontWeight: "600" }}
-        color="inherit"
-      >
-        LogOut
+        <Button
+          onClick={logout}
+          // href="/"
+          style={{ fontSize: "15px", fontWeight: "600" }}
+          color="inherit"
+        >
+          LogOut
       </Button>
-    </div>
-  </div>
-);
+      </div>
+    </div >
+  )
+};
 
 export default withStyles(styles)(AppBarCollapse);

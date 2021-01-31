@@ -1,29 +1,49 @@
-import { STORE_USER, STORE_DATA, USER_LOGIN } from '../../actions/actionTypes';
+import { UserActionTypes } from './userTypes'
 
-const initState = {
-    user: null,
-}
+const initialState = {
+    access: localStorage.getItem('access'),
+    refresh: localStorage.getItem('refresh'),
+    isAuthenticated: null,
+    user: null
+};
+const userReducer = function (state = initialState, action) {
+    const { type, payload } = action
+    switch (type) {
+        case UserActionTypes.LOGIN_SUCCESS:
+            localStorage.setItem('access', payload.access)
+            return {
+                ...state,
+                access: payload.access,
+                refresh: payload.refresh,
 
-const usersReducer = (state = initState, action) => {
-    // console.log("actiontype", action.type)
-    switch (action.type) {
-        case USER_LOGIN:
-
-            return { ...state, user: action.payload }
-
-        // case USER_LOGIN:
-        //     return { ...state, user: action.payload }
-
-        // case STORE_DATA:
-        //     return { ...state, user: action.payload }
-
-        // case ADD_ROLE:
-        //     return { ...state, role: action.payload }
-
+            }
+        case UserActionTypes.USER_LOADED_SUCCESS:
+            localStorage.setItem('id', payload.id)
+            return {
+                ...state,
+                isAuthenticated: true,
+                user: payload
+            }
+        case UserActionTypes.USER_LOADED_FAIL:
+            // localStorage.removeItem('access')
+            return {
+                ...state,
+                isAuthenticated: null,
+                user: null
+            }
+        case UserActionTypes.LOGIN_FAIL:
+            localStorage.removeItem('access')
+            localStorage.removeItem('refresh')
+            alert('are you trying to hack me ?')
+            return {
+                ...state,
+                access: null,
+                refresh: null,
+                isAuthenticated: false,
+                user: null,
+            }
         default:
             return state
     }
-
 }
-
-export default usersReducer;
+export default userReducer 
