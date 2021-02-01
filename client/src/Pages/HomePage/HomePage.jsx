@@ -5,7 +5,7 @@ import NewTweet from "../../Components/NewTweet/NewTweet";
 import PeopleTweet from "../../Components/CardPeopleTweet/PeopleTweet";
 import "./HomePage.css";
 
-const HomePage = () => {
+const HomePage = ({ id, match }) => {
   return (
     <div>
       <NavBar />

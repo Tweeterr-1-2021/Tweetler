@@ -9,7 +9,8 @@ import {
     SIGNUP_FAIL,
     ACTIVATION_SUCCESS,
     ACTIVATION_FAIL,
-    LOGOUT } from '../../actions/actionTypes';
+    LOGOUT
+} from '../../actions/actionTypes';
 
 const initState = {
     access: localStorage.getItem('access'),
@@ -26,12 +27,12 @@ const usersReducer = (state = initState, action) => {
         case LOGIN_SUCCESS:
             localStorage.setItem('access', payload.access);
             localStorage.setItem('refresh', payload.refresh);
-            return { 
+            return {
                 ...state,
                 isAuthenticated: true,
                 access: payload.access,
                 refresh: payload.refresh
-             }
+            }
 
         case SIGNUP_SUCCESS:
             return {

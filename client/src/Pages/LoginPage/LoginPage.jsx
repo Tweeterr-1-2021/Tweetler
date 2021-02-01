@@ -65,6 +65,9 @@ const LoginPage = () => {
         dispatch(logIn(email, password));
     };
 
+    if (userInStore.access && userInStore.access !== null) {
+        return <Redirect to='/home' />
+    }
 
     return (
         <Container
@@ -99,7 +102,7 @@ const LoginPage = () => {
                                 variant="outlined"
                                 required
                                 fullWidth
-                                label="username"
+                                label="email"
                                 autoFocus
                             />
                         </Grid>

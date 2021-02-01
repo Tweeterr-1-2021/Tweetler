@@ -7,6 +7,7 @@ import BookmarkIcon from "@material-ui/icons/Bookmark";
 import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
 import { BiImage } from "react-icons/bi";
+import Comment from './comment'
 
 const PeopleTweet = ({ tweet }) => {
   // console.log(',,,', tweet)
@@ -64,7 +65,7 @@ const PeopleTweet = ({ tweet }) => {
   }
 
 
-  console.log('tweet', tweet, 'comment', newComment, 'like', likes, 'bookMark', bookMark)
+  console.log('tweet', tweet)
   return (
     <div className="box-peopletweet">
       <div>
@@ -75,7 +76,7 @@ const PeopleTweet = ({ tweet }) => {
         />
       </div>
       <div className="div-name">
-        <p id="pname">{tweet.user}</p>
+        <p id="pname">{tweet.user}mnmnb</p>
         <p id="twdate">{tweet.time.split('T')[0] + '  ,' + tweet.time.split('T')[1].split('.')[0]}</p>
       </div>
       <p id="tweet-content">
@@ -129,6 +130,7 @@ const PeopleTweet = ({ tweet }) => {
           </Button>
         </div>
       </div>
+      <Comment />
     </div>
   );
 };
