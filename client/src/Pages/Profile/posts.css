@@ -1,0 +1,183 @@
+.tweet__image {
+    width: 100%;
+    height: 60%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 15px;
+}
+
+.tweet-body {
+    margin-top: 20px;
+    /* margin-left: 25rem; */
+    text-align: start;
+    box-shadow: 7px 10px 87px 16px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    padding-top: 10px;
+    border-radius: 20px;
+    background-color: #f5f8fa;
+    width: 80%
+}
+
+.tweet__top {
+    display: flex;
+    align-items: center
+}
+
+.twet__top__image {
+    text-decoration: none;
+    cursor: pointer
+}
+
+.avatar__image {
+    width: 50px;
+    height: 40px
+}
+
+.top__date {
+    margin-left: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center
+}
+
+.comments-saves {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    color: gray
+}
+
+.comments-sec {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: gray;
+}
+
+.comments-sec>div {
+    cursor: pointer;
+    display: flex;
+    align-items: center
+}
+
+.profile-comment {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    margin-top: 10px
+}
+
+.profile-link {
+    text-decoration: none;
+    cursor: pointer;
+    margin-right: 5px
+}
+
+.profile-othercomment {
+    display: flex;
+    margin-top: 15px;
+}
+
+.actual-comment {
+    margin: 0px;
+    margin-left: 15px;
+    color: rgb(68, 68, 67);
+}
+
+.like-comment {
+    display: flex;
+    color: gray
+}
+
+.like-icon {
+    cursor: pointer;
+    display: flex;
+    align-items: flex-start
+}
+
+.tweet__input {
+    margin-top: 7px;
+    background-color: white;
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 15px;
+}
+
+.tweet__input:focus {
+    outline: none;
+}
+
+.comments {
+    margin-top: 15px;
+    display: flex;
+    align-items: flex-start;
+}
+
+.comments_img {
+    /* margin: 5px; */
+    width: 40px;
+    height: 40px;
+    background: url('https://www.personality-database.com/profile_images/121360.png?id=107143');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    border-radius: 20px;
+}
+
+.comments_details {
+    margin-left: 10px;
+    width: 90%;
+    padding: 5px;
+    background: #FAFAFA;
+    border-radius: 8px;
+}
+
+.comments_details div p {
+    /* margin-top: 2px; */
+    margin-left: 20px;
+    margin-bottom: 4px;
+}
+
+.comments_name {
+    margin-top: 2px;
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    letter-spacing: -0.035em;
+    color: #000000;
+}
+
+.comments_date {
+    margin-top: 6px;
+    font-family: Noto Sans;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: -0.035em;
+    color: #BDBDBD;
+}
+
+.comments_details p {
+    margin-left: 10px;
+    text-align: start;
+    margin-top: 0px;
+    font-family: Noto Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 13px;
+    line-height: 22px;
+    letter-spacing: -0.035em;
+    color: #4F4F4F;
+}
+
+@media (max-width: 900px) {
+    .comments-sec {
+        border-top: none;
+        border-bottom: none
+    }
+}

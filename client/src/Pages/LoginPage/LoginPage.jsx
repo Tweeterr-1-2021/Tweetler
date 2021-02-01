@@ -1,8 +1,6 @@
-import React, { useState } from 'react';
-import { Redirect } from 'react-router-dom';
-import { useSelector, useDispatch } from 'react-redux';
-import { logIn } from '../../actions/Users/usersActions';
+import { Redirect } from "react-router-dom";
 import Link from "@material-ui/core/Link";
+import React, { useState, useEffect } from "react";
 import Avatar from "@material-ui/core/Avatar";
 import Button from "@material-ui/core/Button";
 import CssBaseline from "@material-ui/core/CssBaseline";
@@ -13,7 +11,6 @@ import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 import { GiHummingbird } from "react-icons/gi";
 import "./LoginPage.css";
-
 
 const useStyles = makeStyles((theme) => ({
     paper: {
@@ -42,29 +39,79 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-const LoginPage = () => {
+const LoginPage = ({ login }) => {
     const classes = useStyles();
-    const userInStore = useSelector((state) => state.user);
-    const dispatch = useDispatch();
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
 
-    const [formData, setFormData] = useState({
-        email: '',
-        password: ''
-    });
+    const loadUser = () => {
+        const requestOptions = {
+            method: 'GET',
+            headers: { 'Content-Type': 'application/json', 'Authorization': localStorage.getItem("Authorization") },
+        };
+        return fetch('http://localhost:8000/auth/users/me', requestOptions)
+            .then(response => response.json())
+            .then(data => {
+                console.log("ME", data)
+                localStorage.setItem('id', data.id)
+                // login(localStorage.getItem("Authorization"))
 
-    const { email, password } = formData;
+            })
 
-    const handleChange = e => setFormData({ ...formData, [e.target.name]: e.target.value });
+    }
 
-
-
-    const handleSubmit = e => {
+    console.log("hello");
+    const token = (e) => {
         e.preventDefault();
-        console.log(email)
+        let options = {
+            method: "post",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ email, password }),
+        };
+        let path = "http://127.0.0.1:8000/auth/jwt/create/";
+        fetch(path, options)
+            .then((data) => data.json())
+            .then((data) => {
+                console.log("data", data);
+                localStorage.setItem("Authorization", `JWT ${data.access}`);
 
-        dispatch(logIn(email, password));
+                loadUser()
+
+
+            });
     };
+    // await axios.post(`http://localhost:8000/auth/jwt/create`,
+    //     {
+    //         email: formData.email,
+    //         password: formData.password,
+    //     })
 
+    //     .then(async () => {
+    //         console.log("post", result)
+    //         setAccess(result.data.access);
+    //         setRefresh(result.data.refresh);
+    //         let res = await axios({
+    //             url: 'http://localhost:8000/auth/users/me/',
+    //             method: 'get',
+    //             // timeout: 8000,
+    //             headers: {
+    //                 'Authorization': 'JWT ' + access,
+    //                 'Content-Type': 'application/json',
+    //             }
+    //         })
+    //         if (res.status == 200) {
+    //             // test for status you want, etc
+    //             console.log("get", res)
+    //             localStorage.setItem("access_token", access);
+    //             localStorage.setItem("refresh_token", refresh);
+    //             dispatch(logIn(res.data.name, res.data.email, res.data.id))
+    //             window.location.href = "/"
+    //         }
+
+    //     })
+    //     .catch(() => {
+    //         console.error("err===== =>", err);
+    //     })
 
     return (
         <Container
@@ -85,8 +132,8 @@ const LoginPage = () => {
                 </Avatar>
                 <Typography component="h1" variant="h5">
                     LogIn
-                </Typography>
-                <form className={classes.form} noValidate onSubmit={handleSubmit}>
+        </Typography>
+                <form className={classes.form} noValidate>
                     <Grid container spacing={2}>
                         <Grid item xs={12} sm={12}>
                             <TextField
@@ -95,7 +142,7 @@ const LoginPage = () => {
                                 id="email"
                                 name="email"
                                 value={email}
-                                onChange={(e) => handleChange(e)}
+                                onChange={(e) => setEmail(e.target.value)}
                                 variant="outlined"
                                 required
                                 fullWidth
@@ -111,7 +158,7 @@ const LoginPage = () => {
                                 id="password"
                                 name="password"
                                 value={password}
-                                onChange={handleChange}
+                                onChange={(e) => setPassword(e.target.value)}
                                 required
                                 fullWidth
                                 label="Password"
@@ -125,22 +172,21 @@ const LoginPage = () => {
                         variant="contained"
                         color="primary"
                         className={classes.submit}
-                        // onClick={token}
+                        onClick={token}
                     >
                         LogIn
-                    </Button>
+          </Button>
                     <Grid container justify="flex-end">
                         <Grid item>
                             <Link href="/signup" variant="body2">
                                 Sign up for Twitter
-                            </Link>
+              </Link>
                         </Grid>
                     </Grid>
                 </form>
             </div>
         </Container>
-
-    )
-}
+    );
+};
 
 export default LoginPage;

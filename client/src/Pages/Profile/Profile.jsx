@@ -4,11 +4,19 @@ import "./profile.css";
 import NavBar from "../SharedComponents/NavBar";
 import Card from "./TwetterCard";
 import { GiCogLock, GiConsoleController } from "react-icons/gi";
+import SideNavbar from "../../Components/SideNavbar/SideNavbar";
+import TweetCard from './TwetterCard'
+import TweetBody from '../../Components/CardPeopleTweet/newTweetBox'
+// import Comment from '../../Components/CardPeopleTweet/comment'
 
 export default function Profile() {
   const [mydata, setMydata] = useState([]);
   const [id, setId] = useState(localStorage.getItem("id"));
   useEffect(() => {
+    profileTweet()
+  }, [])
+
+  const profileTweet = () => {
     let options = {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -18,68 +26,54 @@ export default function Profile() {
     fetch(path, options)
       .then((data) => data.json())
       .then((data) => {
-        console.log("mydataa", data);
         setMydata(data)
       })
-  }, [])
+  }
+  console.log('wheeeen en data', mydata)
 
-  // console.log('<<<<<<<<', mydata)
+  // console.log('mydata', mydata, 'Id', id, 'userId', { pk: id })
   // console.log("asd", id)
   return (
-    <div className="row py-5 px-4">
+    <div>
       <NavBar />
-      <div className="col-md-5 mx-auto">
-        <div className="bg-white shadow rounded overflow-hidden">
-          <div className="px-4 pt-0 pb-4 cover">
-            <div className="media align-items-end profile-head">
-              <div className="profilebg">
-                <div className="profile mr-3">
-                  <img
-                    src={mydata.image}
-                    alt="..."
-                    className=" forProfile"
-                  />
-                </div>
-                <div className="ForName">
-                  <h4 className="mt-0 mb-0">{mydata.name}</h4>
-                  <p className="small mb-4">palestine</p>
-                </div>
-                <button id="edit" href="#">
-                  Edit profile
-                </button>
-                <div className="forFollows">
-                  <ul className="forFollow">
-                    <li className="forli">
-                      215
-                      <br />
-                      <i className="fori">Photos</i>
-                    </li>
-                    <li className="forli">
-                      745
-                      <br />
-                      <i className="fori">Followers</i>
-                    </li>
-                    <li className="forli">
-                      340
-                      <br /> <i className="fori ">Following</i>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
+      <div className="profile">
+        <div className="backprofile__picture"></div>
+        <div className="homepage__text">
+          <div  >
+            <img src={mydata.image} className="profile__picture" />
           </div>
-          {/* <div> */}
-          {
-            mydata && mydata.tweets && mydata.tweets.map((tweet, i) => (
-              <Card mydata={mydata} tweet={tweet} key={i} />
-            ))
-          }
-          {/* </div> */}
-          {/* {console.log('sss', mydata)} */}
-          {/* <Card mydata={mydata} /> */}
-
+          <div className="profile__right ">
+            <h3>{mydata.name}</h3>
+          </div>
+          <h4 className="profile__about">Web Developer</h4>
+          <div className="profile__about1">
+            <span>
+              <strong>{mydata?.following_To?.length} </strong> following
+            </span>
+            <span style={{ marginLeft: "10px" }}>
+              <strong>{mydata?.following_From?.length}</strong> follower
+            </span>
+          </div>
         </div>
       </div>
-    </div>
+      <br />
+      <br />
+      <br />
+      <br />
+      <div style={{ display: 'flex' }}>
+        <div style={{ flex: '0.3' }}>
+          <SideNavbar />
+        </div>
+        <div style={{ flex: '0.7' }}>
+          {mydata?.tweets?.map((tweet, i) => (
+
+            <TweetBody tweet={tweet} key={i} />
+          )
+          )}
+        </div>
+        {/* <TweetCard /> */}
+      </div>
+      <div style={{ marginTop: "8%" }}>book</div>
+    </div >
   );
 }
