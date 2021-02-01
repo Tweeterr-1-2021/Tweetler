@@ -7,7 +7,7 @@ import "./HomePage.css";
 
 const HomePage = ({ id, match }) => {
   return (
-    <div>
+    <div className="homepage">
       <NavBar />
       <SideNavbar />
       <Main id={id} match={match} />
