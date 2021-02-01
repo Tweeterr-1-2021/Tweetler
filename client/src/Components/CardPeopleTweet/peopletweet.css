@@ -1,10 +1,11 @@
 .box-peopletweet {
-  position: absolute;
+  margin-top: 40px;
+  position: relative;
   width: 520px;
   height: 620px;
   margin-left: 4.6rem;
-  left: 340px;
-  top: 332.9px;
+  /* left: 340px; */
+  /* top: 332.9px; */
   background: #ffffff;
   box-shadow: 0px 2px 4px rgb(61, 78, 177);
   border-radius: 12px;

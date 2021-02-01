@@ -1,95 +1,82 @@
-import React from "react";
-import { GoComment } from "react-icons/go";
-import { RiRepeat2Fill } from "react-icons/ri";
-import { AiOutlineLike } from "react-icons/ai";
-import { BiBookmark } from "react-icons/bi";
+import React, { useState, useEffect } from "react"
+import Avatar from '@material-ui/core/Avatar';
+import "./posts.css"
+import ChatBubbleOutlineIcon from '@material-ui/icons/ChatBubbleOutline';
+import LoopIcon from '@material-ui/icons/Loop';
+import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
+import useMediaQuery from '@material-ui/core/useMediaQuery';
+import { NavLink, Link } from "react-router-dom"
+import CommentIcon from '@material-ui/icons/Comment';
+import FavoriteIcon from '@material-ui/icons/Favorite';
+import BookmarkBorderIcon from '@material-ui/icons/BookmarkBorder';
+// import CloudImage from "./uplodimage"
+// import Comment from './comment'
+// import aaa from "./aaa.png"
+
+import RepeatIcon from "@material-ui/icons/Repeat";
+import BookmarkBorderOutlinedIcon from '@material-ui/icons/BookmarkBorderOutlined';
+
 
 import "./cardStyle.css";
 import { colors } from "@material-ui/core";
 
-function Card({ tweet, mydata }) {
-  console.log(tweet, 'sss', mydata)
+function TweetCard() {
+
   return (
-    <div className="social-card">
-      <div className="user-pic">
-        <img
-          className="user-img"
-          // src="https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=80"
-          src={mydata.image}
+    <div className="tweet-body">
+      <div className="tweet__top" >
+        <Link to="/profile" className="twet__top__image">
+          <Avatar ><img className=" avatar__image" src='' /></Avatar>
+        </Link>
 
-          alt="nfl-logo"
-        />
-      </div>
-      <div className="body-tweet">
-        <header>
-
-          <div className="text-box">
-            <h4>{mydata.name}</h4>
-            <p>{tweet.time.split('T')[0]}</p>
-            <div>{tweet.tweet}</div>
-          </div>
-        </header>
-        <p style={{ color: "white", marginLeft: "-51px", fontSize: "15px" }}>
-          Hello World ^_*
-        </p>
-        <div className="tweet-ref">
-          <img
-            className="pic-content"
-            // src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTs4Vd8q40566y6_OdxwPz1KK8f-MEFah-gJg&usqp=CAU"
-            src={tweet.img}
-            // src="https://www.meme-arsenal.com/memes/4f06689941a7f10ec0e532177b55346f.jpg"
-            alt="nfl-pic"
-          />
-        </div>
-
-        <div className="footer-container">
-          <div className="footer-icons">
-            <GoComment className="icon-pic comment-pic" />
-            {/* &nbsp;&nbsp;2 */}
-            {tweet.comments.length}
-          </div>
-          <div className="footer-icons">
-            <AiOutlineLike className="icon-pic comment-pic" />
-            {/* &nbsp;&nbsp;90 */}
-            {tweet.tweet_likes.length}
-          </div>
-          <div className="footer-icons">
-            <BiBookmark className="icon-pic comment-pic" />
-            &nbsp;&nbsp;
-          </div>
-        </div>
-
-        <div class="timeline-comment-box">
-          <div className="user-pic">
-            <img
-              className="user-img"
-              src="https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=80"
-              alt="nfl-logo"
-            />
-          </div>
-          <div class="input">
-            <form action="">
-              <div class="input-group">
-                <input
-                  type="text"
-                  class="form-control rounded-corner"
-                  placeholder="   Write a comment..."
-                />
-                <span class="input-group-btn p-l-10">
-                  <button
-                    class="btn btn-primary f-s-12 rounded-corner"
-                    type="button"
-                  >
-                    Comment
-                  </button>
-                </span>
-              </div>
-            </form>
-          </div>
+        <div className='top__date'>
+          <h4 style={{ margin: "0px" }} >fgfkg</h4>
+          <h5 style={{ margin: "0px", color: "gray" }}>dgjdfhgfjdkg</h5>
         </div>
       </div>
+      <h4 style={{ color: "gray" }}>
+        {/* {tweetResult.caption} */}
+        sdfjsdkf
+      </h4>
+      {
+        <img className="tweet__image" src='' />
+      }
+      <div className="comments-saves ">
+        <h5 style={{ marginRight: "10px" }}> comments</h5>
+        <h5 style={{ marginRight: "10px" }}> likes</h5>
+        <h5>  saves</h5>
+      </div>
+      <div className='comments-sec'>
+        <CommentIcon style={{ width: '35px', height: "35px" }} />
+        <FavoriteIcon style={{ width: '35px', height: "35px" }} />
+        <BookmarkBorderIcon style={{ width: '35px', height: "35px" }} />
+
+        {/* <MenuOptions text="Retweet" Icon={RepeatIcon} />
+        <MenuOptions text="Like" Icon={FavoriteBorderIcon} />
+        <MenuOptions text="Save" Icon={BookmarkBorderOutlinedIcon} /> */}
+      </div>
+      <div className="profile-comment" >
+        <Link to="/profile" className="profile-link">
+          <Avatar ><img className="avatar__image" src='' /></Avatar>
+        </Link>
+        {/* <SearchBar tweetid={tweetResult._id} /> */}
+      </div>
+      <form style={{ width: '90%' }} onSubmit=''>
+
+        <input className='tweet__input' placeholder="add a comment .." type='text' value='{content}' />
+      </form>
+      {/* {
+        tweet && comments.map((comment, i) => <Comment key={i} comment={comment} />)
+      } */}
+      {/* {
+        tweetResult.comments && tweetResult.comments.map(comment => {
+            return (
+                <CommentLike comment={comment} user={user} />
+            )
+        })
+    } */}
     </div>
   );
 }
 
-export default Card;
+export default TweetCard;

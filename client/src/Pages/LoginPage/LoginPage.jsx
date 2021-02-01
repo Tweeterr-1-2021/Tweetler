@@ -44,19 +44,21 @@ const LoginPage = ({ login }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  // const loadUser = () => {
-  //     const requestOptions = {
-  //         method: 'GET',
-  //         headers: { 'Content-Type': 'application/json', 'Authorization': localStorage.getItem("Authorization") },
-  //     };
-  //     return fetch('http://localhost:8000/auth/users/me', requestOptions)
-  //         .then(response => response.json())
-  //         .then(data => {
-  //             console.log("ME", data)
-  //             return data
-  //         })
+  const loadUser = () => {
+    const requestOptions = {
+      method: 'GET',
+      headers: { 'Content-Type': 'application/json', 'Authorization': localStorage.getItem("Authorization") },
+    };
+    return fetch('http://localhost:8000/auth/users/me', requestOptions)
+      .then(response => response.json())
+      .then(data => {
+        console.log("ME", data)
+        localStorage.setItem('id', data.id)
+        login(localStorage.getItem("Authorization"))
 
-  // }
+      })
+
+  }
 
   console.log("hello");
   const token = (e) => {
@@ -72,7 +74,10 @@ const LoginPage = ({ login }) => {
       .then((data) => {
         console.log("data", data);
         localStorage.setItem("Authorization", `JWT ${data.access}`);
-        login(localStorage.getItem("Authorization"));
+
+        loadUser()
+
+
       });
   };
   // await axios.post(`http://localhost:8000/auth/jwt/create`,
