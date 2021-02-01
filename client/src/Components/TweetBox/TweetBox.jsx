@@ -1,5 +1,22 @@
+import React, { useState } from 'react';
 import './TweetBox.css';
-const TweetBox = () => {
+const TweetBox = ({ tweet }) => {
+
+    const [content, setContent] = useState('')
+    const postTweet = (e) => {
+        e.preventDefault()
+        const requestOptions = {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ tweet: tweet.tweet, user_Id: tweet.id })
+        }
+        fetch('http://127.0.0.1:8000/tweet/', requestOptions)
+            .then(response => response.json())
+            .then(data => {
+                setContent('')
+            })
+    }
+
     return (
         <div className="tweet-box">
             <div className="tweet-box-image">
@@ -56,7 +73,7 @@ const TweetBox = () => {
                         </div>
 
                         <div className="tweet-options-btn">
-                            <a>Tweet</a>
+                            <a onClick={postTweet}>Tweet</a>
                         </div>
                     </div>
                 </div>

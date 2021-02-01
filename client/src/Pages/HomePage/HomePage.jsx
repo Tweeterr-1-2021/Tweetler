@@ -12,6 +12,7 @@ const HomePage = ({ id, match }) => {
       <SideNavbar />
       <Main id={id} match={match} />
     </div>
+    
   );
 };
 

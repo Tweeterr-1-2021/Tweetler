@@ -15,19 +15,15 @@
   padding: 10px 15px;
   border-bottom: 1px solid #ebeef0;
 }
-
 .tweeter-trends-container .trends-data a {
   color: #1da1f2;
 }
-
 .tweeter-trends-container .trends div:nth-child(2) {
   font-size: 13px;
 }
-
 .tweeter-trends-container .trends-data:last-child {
   border-bottom: none;
 }
-
 .tweeter-trends-container .trends-data:first-child {
   display: flex;
   flex-direction: row;
@@ -35,7 +31,6 @@
   width: 318px;
   height: 25px;
 }
-
 .tweeter-trends-container .trends-data:first-child svg {
   align-self: flex-end;
   position: absolute;
@@ -44,7 +39,6 @@
   width: 23px;
   height: 23px;
 }
-
 .tweeter-trends-container .trends-data:first-child h3 {
   margin: 0;
 }
@@ -53,21 +47,17 @@
   position: relative;
   margin-bottom: 3px;
 }
-
-.trends-hashtag>div {
+.trends-hashtag > div {
   display: inline-block;
 }
-
 .trends-hashtag div:first-child {
   font-weight: 700;
 }
-
 .trends-hashtag .dots-container {
   position: absolute;
   right: 5px;
   display: inline-block;
 }
-
 .trends-hashtag .dots-container .dots {
   height: 1.25em;
 }

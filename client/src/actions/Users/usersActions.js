@@ -1,29 +1,140 @@
-import { STORE_DATA, USER_LOGIN} from '../actionTypes';
-import { Dispatch } from "redux";
-import axios from "axios";
+import { SIGNUP_SUCCESS, SIGNUP_FAIL, LOGIN_SUCCESS, LOGIN_FAIL, USER_LOADED_SUCCESS, USER_LOADED_FAIL, LOGOUT, AUTHENTICATED_SUCCESS, AUTHENTICATED_FAIL } from '../actionTypes';
+// import axios from "axios";
 
-// export const signUp = (username, email, password) => async (dispatch) => {
-//     // console.log(username, email, password )
-//     try {
-//         await axios.post(`http://localhost:8000/auth/users/`, { name: username, password: password, email: email })
+// export const checkAuthenticated = () => async dispatch => {
+//     if (localStorage.getItem('access')) {
+//         const config = {
+//             headers: {
+//                 'Content-Type': 'application/json',
+//                 'Accept': 'application/json'
+//             }
+//         };
 
-//             .then((result) => {
-//                 console.log("axios", result)
-//                 dispatch({ type: STORE_USER, payload: { username: result.data.name, email: result.data.email, status: result.status, id: result.data.id } })
-//                 window.location.href = "/usertype"
+//         const body = JSON.stringify({ token: localStorage.getItem('access') });
 
-//             })
-//             .catch((err) => {
-//                 console.error("err===== =>", err);
-//             })
+//         try {
+//             const res = await axios.post(`${process.env.REACT_APP_API_URL}/auth/jwt/verify/`, body, config)
+
+//             if (res.data.code !== 'token_not_valid') {
+//                 dispatch({
+//                     type: AUTHENTICATED_SUCCESS
+//                 });
+//             } else {
+//                 dispatch({
+//                     type: AUTHENTICATED_FAIL
+//                 });
+//             }
+//         } catch (err) {
+//             dispatch({
+//                 type: AUTHENTICATED_FAIL
+//             });
+//         }
+
+//     } else {
+//         dispatch({
+//             type: AUTHENTICATED_FAIL
+//         });
 //     }
-//     catch (e) {
-//         console.log("action error", e)
-//     }
-// }
+// };
 
-export const logIn = (username) => async (dispatch) => {
-    // console.log(username, email, password )
-    dispatch({ type: USER_LOGIN, payload: { username} })
+export const signUp = (name, email, password, image) => async (dispatch) => {
+    console.log("=============", name, email, password)
+    try {
+        let options = {
+            method: "post",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ name, email, password, image })
+        };
+        let path = 'http://127.0.0.1:8000/auth/users/';
+        fetch(path, options)
+            .then((data) => data.json())
+            .then((data) => {
+                console.log('signup', data)
+                dispatch({
+                    type: SIGNUP_SUCCESS,
+                    payload: data
+                });
+
+            });
+    }
+    catch (e) {
+        console.log("action error", e)
+        dispatch({
+            type: SIGNUP_FAIL
+        })
+    }
 }
+
+export const loadUser = () => async dispatch => {
+    if (localStorage.getItem('access')) {
+        let options = {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `JWT ${localStorage.getItem('access')}`,
+            }
+        };
+
+        try {
+
+            let path = 'http://127.0.0.1:8000/auth/users/me/';
+            fetch(path, options)
+                .then((data) => data.json())
+                .then((data) => {
+                    console.log('loaduser', data)
+                    dispatch({
+                        type: USER_LOADED_SUCCESS,
+                        payload: data
+                    });
+
+                });
+        }
+        catch (err) {
+            dispatch({
+                type: USER_LOADED_FAIL
+            });
+        }
+    }
+    else {
+        dispatch({
+            type: USER_LOADED_FAIL
+        });
+    }
+};
+
+export const logIn = (email, password) => async (dispatch) => {
+    // console.log("=============", email, password)
+    try {
+        let options = {
+            method: "post",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ email, password })
+        };
+        let path = 'http://127.0.0.1:8000/auth/jwt/create/';
+        fetch(path, options)
+            .then((data) => data.json())
+            .then((data) => {
+                console.log('login', data)
+                dispatch({
+                    type: LOGIN_SUCCESS,
+                    payload: data
+                });
+            });
+
+        dispatch(loadUser());
+    }
+    catch (e) {
+        console.log("action error", e)
+        dispatch({
+            type: LOGIN_FAIL
+        })
+    }
+}
+
+export const logOut = () => dispatch => {
+    dispatch({
+        type: LOGOUT
+    });
+};
+
 

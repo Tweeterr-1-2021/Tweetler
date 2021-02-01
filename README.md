@@ -17,7 +17,7 @@ Servize uses a number of open source projects:
 * [React](https://reactjs.org/) - library for UI components.
 * [Redux](https://redux.js.org/) - library for managing application state.
 * [Django](https://www.djangoproject.com/) - evented I/O for the backend
-* [PostgreSQL](https://www.postgresql.org/) - relational database management system
+* [SQLite](https://www.sqlite.org/index.html) - relational database management system
 
 ### Development
 To run this project on your local machine:
