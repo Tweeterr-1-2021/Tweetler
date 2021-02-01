@@ -1,10 +1,12 @@
 .box-newtweet {
-  position: absolute;
+  position: relative;
   width: 520px;
+  margin-bottom: 40px;
+  margin-top: 40px;
   margin-left: 3.6rem;
   height: 195.29px;
-  left: 360px;
-  top: 94.29px;
+  /* left: 360px; */
+  /* top: 94.29px; */
   background: #ffffff;
   box-shadow: 0px 2px 4px rgba(67, 76, 207, 0.479);
   border-radius: 12px;

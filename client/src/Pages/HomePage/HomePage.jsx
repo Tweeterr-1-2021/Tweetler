@@ -5,13 +5,16 @@ import NewTweet from "../../Components/NewTweet/NewTweet";
 import PeopleTweet from "../../Components/CardPeopleTweet/PeopleTweet";
 import "./HomePage.css";
 
-const HomePage = () => {
+const HomePage = ({ id, match }) => {
   return (
-    <div className="homepage">
+    <div>
       <NavBar />
-      <SideNavbar />
-      <Main />
+      <div className="homepage" style={{ marginTop: "65px" }}>
+        <SideNavbar />
+        <Main />
+      </div>
     </div>
+    
   );
 };
 
